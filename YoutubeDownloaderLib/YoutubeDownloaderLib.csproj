@@ -11,10 +11,4 @@
     <PackageReference Include="YoutubeExplode" Version="6.2.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="FFmpeg.Net">
-      <HintPath>bin\Debug\net6.0\FFmpeg.NET.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
