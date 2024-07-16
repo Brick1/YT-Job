@@ -8,18 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\**" />
-    <Compile Remove="ViewModels\**" />
-    <EmbeddedResource Remove="Models\**" />
-    <EmbeddedResource Remove="ViewModels\**" />
-    <None Remove="Models\**" />
-    <None Remove="ViewModels\**" />
-    <Page Remove="Models\**" />
-    <Page Remove="ViewModels\**" />
+    <ProjectReference Include="..\YoutubeDownloaderLib\YoutubeDownloaderLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoutubeDownloaderLib\YoutubeDownloaderLib.csproj" />
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
