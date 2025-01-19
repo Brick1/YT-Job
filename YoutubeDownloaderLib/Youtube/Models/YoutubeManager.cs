@@ -55,7 +55,7 @@ namespace YoutubeDownloader.Youtube.Models
         /// <param name="video"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        public async Task DownloadAudioFromAsync(IYoutubeVideoInfo video, IProgress<double> progress)
+        public async Task DownloadAudioAsync(IYoutubeVideoInfo video, IProgress<double> progress)
         {
             CancellationToken cancellationToken = new CancellationToken();
             var extension = ".mp3";
@@ -83,7 +83,7 @@ namespace YoutubeDownloader.Youtube.Models
         /// <param name="video"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        public async Task DownloadVideoFromAsync(IYoutubeVideoInfo video, IProgress<double> progress)
+        public async Task DownloadVideoAsync(IYoutubeVideoInfo video, IProgress<double> progress)
         {
             var extension = ".mp4";
             CancellationToken cancellationToken = new CancellationToken();
