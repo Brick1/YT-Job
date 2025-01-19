@@ -10,7 +10,7 @@ namespace YoutubeDownloaderConsole
         {
             YoutubeManager manager = new YoutubeManager();
             IProgress<double> progress = new Progress<double>();
-            manager.DownloadVideoAsync("https://www.youtube.com/watch?v=oqCY1Hxd8FU", progress).Wait();
+            manager.DownloadVideoAsync("https://www.youtube.com/watch?v=hk_BmN8lTxY", progress).Wait();
 
             
             

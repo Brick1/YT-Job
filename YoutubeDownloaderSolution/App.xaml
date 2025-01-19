@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Dictionaries/FontsDictioanry.xaml"/>
                 <ResourceDictionary Source="Themes/ColorThemes.xaml"/>
+                <ResourceDictionary Source="Themes/ControlsCustom.xaml"/>
             </ResourceDictionary.MergedDictionaries>            
         </ResourceDictionary>
     </Application.Resources>

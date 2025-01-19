@@ -9,17 +9,17 @@
 
   <ItemGroup>
     <Compile Remove="Models\**" />
-    <Compile Remove="ViewModels\**" />
     <EmbeddedResource Remove="Models\**" />
-    <EmbeddedResource Remove="ViewModels\**" />
     <None Remove="Models\**" />
-    <None Remove="ViewModels\**" />
     <Page Remove="Models\**" />
-    <Page Remove="ViewModels\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\YoutubeDownloaderLib\YoutubeDownloaderLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
