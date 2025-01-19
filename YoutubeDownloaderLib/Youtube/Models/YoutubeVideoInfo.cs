@@ -10,12 +10,6 @@ namespace YoutubeDownloader.Youtube
     public class YoutubeVideoInfo : IYoutubeVideoInfo
     {
         /// <summary>
-        /// Duration of the video
-        /// Will be obselete and removed
-        /// </summary>
-        [Obsolete("Duration of the video")]
-        public TimeSpan? Duration { get; }
-        /// <summary>
         /// Title of the video
         /// </summary>
         public string Title { get; }

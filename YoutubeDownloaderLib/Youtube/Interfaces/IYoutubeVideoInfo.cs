@@ -30,11 +30,6 @@ namespace YoutubeDownloader.Youtube.Interfaces
         string ID { get; }
 
         /// <summary>
-        /// The duration of the video
-        /// </summary>
-        TimeSpan? Duration { get; }
-
-        /// <summary>
         /// Collection of the thumbnails for the video
         /// </summary>
         Thumbnails Thumbnails { get; }
