@@ -10,7 +10,7 @@ namespace YoutubeDownloader.Youtube.Models
 {
     public class YoutubePlaylistInfo : IYoutubePlaylistInfo
     {
-        public YoutubePlaylistInfo(string title, string description, YoutubeVideoInfo[] youtubeVideoInfos, string thumbnailURL)
+        public YoutubePlaylistInfo(string title, string description, IYoutubeVideoInfo[] youtubeVideoInfos, string thumbnailURL)
         {
             Title = title;
             Description = description;

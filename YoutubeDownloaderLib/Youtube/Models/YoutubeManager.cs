@@ -218,17 +218,11 @@ namespace YoutubeDownloader.Youtube.Models
         }
 
 
-        //public Task<bool> CheckVideoStatus(string videoID)
-        //{
-        //    var videoStatusRequest = ytService.Videos.List();
-        //    videoStatusRequest
-        //}
-
         /// <summary>
         /// Creates video info from <see cref="PlaylistItem"/>
         /// </summary>
         /// <returns>Newly created <see cref="YoutubeVideoInfo"/></returns>
-        private YoutubeVideoInfo CreateVideoInfo(PlaylistItem item)
+        private IYoutubeVideoInfo CreateVideoInfo(PlaylistItem item)
         {
             var id = item.Snippet?.ResourceId.Kind == "youtube#video" ? item.Snippet.ResourceId.VideoId : "";
             var title = item.Snippet?.Title;
