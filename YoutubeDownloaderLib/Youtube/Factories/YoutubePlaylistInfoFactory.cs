@@ -10,7 +10,7 @@ namespace YoutubeDownloaderLib.Youtube.Factories
 {
     internal class YoutubePlaylistInfoFactory
     {
-        public static IYoutubePlaylistInfo GetYoutubePlaylistInfo(string? title, string? description, string? thumbnailURL, IYoutubeVideoInfo[] videoInfos)
+        public static IYoutubePlaylistInfo CreateYoutubePlaylistInfo(string? title, string? description, string? thumbnailURL, IYoutubeVideoInfo[] videoInfos)
         {
             if (string.IsNullOrEmpty(title))
                 title = "Title was not provided";
