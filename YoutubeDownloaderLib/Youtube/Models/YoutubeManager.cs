@@ -82,7 +82,6 @@ namespace YoutubeDownloader.Youtube.Models
         /// </summary>
         /// <param name="video"></param>
         /// <param name="progress"></param>
-        /// <returns></returns>
         public async Task DownloadVideoAsync(IYoutubeVideoInfo video, IProgress<double> progress)
         {
             var extension = ".mp4";
@@ -230,6 +229,21 @@ namespace YoutubeDownloader.Youtube.Models
             var thumbnails = GetThumnbails(item.Snippet?.Thumbnails);
             var addedToPlaylist = item.Snippet?.PublishedAt;
             var url = item.Snippet;
+            return new YoutubeVideoInfo(title, author, id, thumbnails, addedToPlaylist, null);
+        }
+
+        /// <summary>
+        /// Creates video info from provided arguments>
+        /// </summary>
+        /// <returns>Newly created <see cref="YoutubeVideoInfo"/></returns>
+        private IYoutubeVideoInfo CreateVideoInfo(string videoUrl, string? resourceId, string? videoTitle, string? videoAuthor, Thumbnails? thumbNails, DateTime? publishedAt, TimeSpan? duration = null)
+        {
+            var id = resourceId == "youtube#video" ? resourceId : "";
+            var title = videoTitle;
+            var author = videoAuthor;
+            var thumbnails = thumbNails;
+            var addedToPlaylist = publishedAt;
+            var url = videoUrl;
             return new YoutubeVideoInfo(title, author, id, thumbnails, addedToPlaylist, null);
         }
 

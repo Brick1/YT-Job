@@ -48,7 +48,6 @@ namespace YoutubeDownloader.Youtube
             return manifest.GetMuxedStreams().GetWithHighestBitrate();
         }
 
-
         /// <summary>
         /// Downloads audio async to a local drive
         /// </summary>
@@ -78,7 +77,6 @@ namespace YoutubeDownloader.Youtube
             }
             return downloadedAudios;
         }
-
 
         /// <summary>
         /// Downloads audio async to a local drive
