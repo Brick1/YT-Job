@@ -25,35 +25,18 @@ namespace YoutubeDownloader
                 Directory.CreateDirectory(path);
         }
 
-        public void SaveVideoToFile(IYoutubeVideoInfo videoInfo, byte[] bytes, string path)
-        {
-            savedVideoInfos[path] = new Tuple<IYoutubeVideoInfo, string>(videoInfo, path);
-            SaveBytesToFile(bytes, path);
-        }
-
-        public void SaveBytesToFile(byte[] bytes, string path)
-        {
-            CheckFolder(path);
-            File.WriteAllBytes(path, bytes);
-        }
-
-        public Task SaveBytesToFileAsync(byte[] bytes, string path)
-        {
-            return Task.Run(() =>
-            {
-                CheckFolder(path);
-                File.WriteAllBytes(path, bytes);
-            });
-        }
-
         public void LoadSettings()
         {
+            CheckFolder(Path.Combine(Settings.Instance.AppFolder, Settings.MAIN_FOLDER_NAME));
+
             string filePath = Path.Combine(Settings.Instance.AppFolder, Settings.MAIN_FOLDER_NAME, "appsettings.json");
             var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllText(filePath));
         }
 
         public async Task SaveSettingsAsync()
         {
+            CheckFolder(Path.Combine(Settings.Instance.AppFolder, Settings.MAIN_FOLDER_NAME));
+
             string filePath = Path.Combine(Settings.Instance.AppFolder, Settings.MAIN_FOLDER_NAME, "appsettings.json");
             using FileStream createStream = File.Create(filePath);
             await JsonSerializer.SerializeAsync(createStream, new { Settings.Instance.VideoFolderPath, Settings.Instance.AudioFolderPath });
