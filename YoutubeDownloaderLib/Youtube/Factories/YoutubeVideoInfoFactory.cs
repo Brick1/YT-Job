@@ -32,8 +32,7 @@ namespace YoutubeDownloaderLib.Youtube.Factories
                 itemSnippetAuthor, 
                 itemSnippetResourceIDKind, 
                 itemSnippetThumbnails, 
-                itemSnippetAddedToPlaylist,
-                null
+                itemSnippetAddedToPlaylist
                 );
         }
     }

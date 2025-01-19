@@ -99,9 +99,31 @@ namespace YoutubeDownloader.Youtube.Models
                 Console.WriteLine("Video couldnt be downloaded\nReason:");
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.InnerException?.Message);
-            }
-            
+            }            
         }
+
+
+        /// <summary>
+        /// Downloads a video with given URL
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="progress"></param>
+        /// <returns></returns>
+        public async Task DownloadVideoAsync(string url,  IProgress<double> progress)
+        {
+            var extension = ".mp4";
+
+            // Check the url
+            var videoUrl = Helper.ExtractVideoID(url);
+            if (videoUrl == null)
+                return;
+
+            var downloadInfo = await downloader.DownloadVideoAsync(videoUrl, progress);
+            var output = Path.Combine(Settings.Instance.VideoFolderPath, downloadInfo.Item2 + extension);
+            MediaConverter.ConvertAsync(downloadInfo.Item1, output, default).Wait();
+            File.Delete(downloadInfo.Item1);
+        }
+
 
         /// <summary>
         /// Gets an array with videos urls
@@ -110,7 +132,7 @@ namespace YoutubeDownloader.Youtube.Models
         /// <returns>An array of urls as string</returns>
         public async Task<YoutubePlaylistInfo?> GetPlaylistVideosUrlsAsync(string playlistID)
         {
-            List<YoutubeVideoInfo> youtubeVideos = new List<YoutubeVideoInfo>();
+            List<IYoutubeVideoInfo> youtubeVideos = new List<IYoutubeVideoInfo>();
 
             var playlistListRequest = ytService.Playlists.List("snippet");
             playlistListRequest.Id = playlistID;
@@ -229,7 +251,7 @@ namespace YoutubeDownloader.Youtube.Models
             var thumbnails = GetThumnbails(item.Snippet?.Thumbnails);
             var addedToPlaylist = item.Snippet?.PublishedAt;
             var url = item.Snippet;
-            return new YoutubeVideoInfo(title, author, id, thumbnails, addedToPlaylist, null);
+            return new YoutubeVideoInfo(title, author, id, thumbnails, addedToPlaylist);
         }
 
         /// <summary>
@@ -244,7 +266,7 @@ namespace YoutubeDownloader.Youtube.Models
             var thumbnails = thumbNails;
             var addedToPlaylist = publishedAt;
             var url = videoUrl;
-            return new YoutubeVideoInfo(title, author, id, thumbnails, addedToPlaylist, null);
+            return new YoutubeVideoInfo(title, author, id, thumbnails, addedToPlaylist);
         }
 
 

@@ -31,7 +31,7 @@ namespace YoutubeDownloader.Youtube.Models
         /// </summary>
         public string Description { get; }
 
-        public YoutubeVideoInfo[] VideosInfos { get; }
+        public IYoutubeVideoInfo[] VideosInfos { get; }
 
         public string ThumbnailURL { get; }
 

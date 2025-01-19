@@ -34,14 +34,13 @@ namespace YoutubeDownloader.Youtube
         /// </summary>
         public DateTime? PusblishedAt { get; }
 
-        public YoutubeVideoInfo(string title, string author, string id, Thumbnails thumbnails, DateTime? publishedAt, TimeSpan? duration)
+        public YoutubeVideoInfo(string title, string author, string id, Thumbnails thumbnails, DateTime? publishedAt)
         {
             Title = title;
             PusblishedAt = publishedAt;
             Author = author;
             ID = id;
             Thumbnails = thumbnails;
-            Duration = duration;
         }
     }
 

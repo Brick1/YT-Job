@@ -89,6 +89,11 @@ namespace YoutubeDownloader.Youtube
             return await DownloadMedia(videoInfo, progress, GetVideoManifest(videoInfo.ID));
         }
 
+        public async Task<Tuple<string, string>> DownloadVideoAsync(string videoID, IProgress<double> progress)
+        {
+            return await DownloadMedia(videoID, progress, GetVideoManifest(videoID));
+        }
+
         /// <summary>
         /// Downloads media to a local file with given delegate
         /// </summary>
@@ -104,6 +109,17 @@ namespace YoutubeDownloader.Youtube
             await client.Videos.Streams.DownloadAsync(stream, path, progress);
             return new Tuple<string, string>(path, videoTitle);
         }
+
+        private async Task<Tuple<string, string>> DownloadMedia(string videoID, IProgress<double> progress, Task<IStreamInfo> downloadMethod)
+        {
+            var stream = await downloadMethod;
+            var meta = await client.Videos.GetAsync(videoID, default);
+            var path = Path.Combine(Path.GetTempPath(), meta.Title + "." + stream.Container.Name);
+            await client.Videos.Streams.DownloadAsync(stream, path, progress);
+            return new Tuple<string, string>(path, meta.Title);
+        }
+
+
 
 
     }
