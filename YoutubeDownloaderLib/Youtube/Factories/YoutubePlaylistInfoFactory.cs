@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using YoutubeDownloader.Youtube.Interfaces;
 using YoutubeDownloader.Youtube.Models;
 
-namespace YoutubeDownloaderLib.Youtube.Models
+namespace YoutubeDownloaderLib.Youtube.Factories
 {
-    internal class IYoutubeVideoInfoFactory
+    internal class YoutubePlaylistInfoFactory
     {
         public static IYoutubePlaylistInfo GetYoutubePlaylistInfo(string? title, string? description, string? thumbnailURL, IYoutubeVideoInfo[] videoInfos)
         {
